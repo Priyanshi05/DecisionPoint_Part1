@@ -1,0 +1,54 @@
+ <!DOCTYPE html>
+<html>
+
+<style>
+table, th , td  {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+}
+table tr:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+form {
+  position: relative;
+}
+.search__suggestion {
+  font: normal normal normal 14px/normal Arial;
+  position: absolute;
+  left: 2px;
+  top: 3px;
+  color: #aaa;
+  z-index: -1;
+}
+input {
+  font: normal normal normal 14px/normal Arial;
+  background: transparent;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+	
+<div ng-app="myApp" ng-controller="homeCtrl"> 
+
+ <input name="q" ng-model="query" ng-keypress="search()" type="text">
+    <div class="search__enhance">
+        <span class="search__offset" ng-bind="suggestion.query"></span>
+        <span class="search__suggestion" ng-bind="suggestion.text"></span>
+    </div>
+<table>
+  <tr ng-repeat="user in users">
+  	<td>{{ $index + 1 }}</td>
+  	<td>{{ user.id }}</td>
+    <td>{{ user.name }}</td>
+    <td>{{ user.email}}</td>
+  </tr>
+</table>
+
+</div>
+</body>
+</html> 
+
